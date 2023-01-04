@@ -1,9 +1,5 @@
 name: Android Release
 
-before_script:
-  # use unshallow instead of GIT_DEPTH
-  - git fetch --unshallow || git fetch --all
-
 # 1
 on:
   # 2
@@ -25,6 +21,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       # 2
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.7
