@@ -1,5 +1,9 @@
 name: Android Release
 
+before_script:
+  # use unshallow instead of GIT_DEPTH
+  - git fetch --unshallow || git fetch --all
+
 # 1
 on:
   # 2
