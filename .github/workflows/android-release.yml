@@ -106,3 +106,26 @@ jobs:
         with:
           name: android-release
           path: build/app/outputs/bundle/release/app-release.aab
+
+  deploy:
+    name: Deploy Android Build
+    # 1
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+        # 2
+      - name: Get Android Build from artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: android-release
+        # 3
+      - name: Release Build to internal track
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
+          packageName: <YOUR_PACKAGE_NAME>
+          releaseFiles: app-release.aab
+          track: alpha
+          status: completed
