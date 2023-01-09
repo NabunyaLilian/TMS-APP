@@ -1,5 +1,5 @@
 # tms_app
-![tms](https://github.com/NabunyaLilian/TMS-APP/actions/workflows/main.yml/badge.svg?branch=main)
+![main](https://github.com/NabunyaLilian/TMS-APP/actions/workflows/main.yml/badge.svg?branch=main)
 
 A new Flutter project.
 
