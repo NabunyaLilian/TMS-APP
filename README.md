@@ -1,5 +1,5 @@
 # tms_app
-![main](https://github.com/NabunyaLilian/TMS-APP/actions/workflows/main.yml/badge.svg?branch=main)  [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
+![main](https://github.com/NabunyaLilian/TMS-APP/actions/workflows/main.yml/badge.svg?branch=main)  [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=NabunyaLilian_TMS-APP&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=NabunyaLilian_TMS-APP)
 
 A new Flutter project.
 
