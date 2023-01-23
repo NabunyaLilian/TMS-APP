@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:tms_app/main.dart';
+import 'package:tms_app/my_widget.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -26,5 +27,16 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+  });
+
+  testWidgets('My widget has a title and message', (widgetTester) async{
+      await widgetTester.pumpWidget(const MyWidget(title: 'T', message: 'M'));
+
+      //Create finders
+      final titleFinder = find.text('T');
+      final messageFinder = find.text('M');
+      
+      expect(titleFinder, findsOneWidget);
+      expect(messageFinder, findsOneWidget);
   });
 }
