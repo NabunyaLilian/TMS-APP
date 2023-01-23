@@ -2,8 +2,6 @@
 name: CI
 on:
   push:
-    tags:
-        - '*'
     branches:
       - main
   pull_request:
@@ -12,7 +10,7 @@ on:
 jobs:
   build:
     name: Build APK
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -33,9 +31,17 @@ jobs:
         run: flutter test
       - name: Build apk
         run: flutter build apk --debug --split-per-abi
+      - run: |
+             flutter build ios --no-codesign
+             cd build/ios/iphoneos
+             mkdir Payload
+             cd Payload
+             ln -s ../Runner.app
+             cd ..
+             zip -r app.ipa Payload
       - name: Create a Release APK
         uses: ncipollo/release-action@v1
         with:
           artifacts: build/app/outputs/apk/debug/*.apk
-          tag: v1.0.2
+          tag: v1.0.${{github.run_number}}
           token: ${{secrets.TOKEN}}
