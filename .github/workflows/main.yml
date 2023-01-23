@@ -31,6 +31,14 @@ jobs:
         run: flutter test
       - name: Build apk
         run: flutter build apk --debug --split-per-abi
+      - run: |
+             flutter build ios --no-codesign
+             cd build/ios/iphoneos
+             mkdir Payload
+             cd Payload
+             ln -s ../Runner.app
+             cd ..
+             zip -r app.ipa Payload
       - name: Create a Release APK
         uses: ncipollo/release-action@v1
         with:
