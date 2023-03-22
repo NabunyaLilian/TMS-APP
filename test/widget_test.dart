@@ -7,26 +7,30 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tms_app/UI/login.dart';
 
 import 'package:tms_app/main.dart';
 import 'package:tms_app/my_widget.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('Main Screen test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final app = find.byType(MaterialApp);
+    final login = find.byType(Login);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    expect(app, findsOneWidget);
+    expect(login, findsOneWidget);
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  testWidgets('Login is displaying right', (widgetTester) async {
+    await widgetTester.pumpWidget( const MaterialApp(home: Scaffold(body:
+    Login(),),), );
+    await widgetTester.pumpAndSettle();
+
+    final textFormField = find.byType(TextFormField);
+    expect(textFormField, findsNWidgets(2));
   });
 
   testWidgets('My widget has a title and message', (widgetTester) async{

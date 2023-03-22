@@ -28,8 +28,7 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return Container(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
         child: SingleChildScrollView(
           child: Form(
@@ -248,7 +247,6 @@ class _LoginState extends State<Login> {
             ),
           ),
         ),
-      ),
     );
   }
 

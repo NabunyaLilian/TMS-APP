@@ -28,8 +28,9 @@ class MyApp extends StatelessWidget {
           bodyText1: TextStyle(color: Colors.white)
         )
       ),
-      home: Login(),
-    );
+      home: const Scaffold(
+          body: Login(),
+    ),);
   }
 }
 
